@@ -14,7 +14,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #111827; /* Sötét háttérszín, ha a videó nem tölt be */
-            color: #d1d5db; /* Alapértelmezett szövegszín (világosszürke) */
+            color: #e5e7eb; /* Világosabb alapértelmezett szövegszín a jobb kontrasztért */
         }
         #bg-video {
             position: fixed;
@@ -30,7 +30,7 @@
         }
         /* Dekoratívabb, kiemelt szekció címek */
         .section-title {
-            @apply text-3xl md:text-4xl font-bold text-amber-400 mb-6 pb-3 text-center border-b-2 border-amber-500/30;
+            @apply text-3xl md:text-4xl font-bold text-amber-400 mb-6 pb-4 text-center border-b-2 border-amber-500/30;
         }
         .section-subtitle {
             @apply text-lg text-gray-300 mb-12 text-center max-w-3xl mx-auto;
@@ -38,13 +38,9 @@
         .nav-link {
             @apply text-white hover:text-amber-400 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium;
         }
-        /* Belső kártyák a szekciókon belül (pl. szolgáltatások) */
+        /* Belső kártyák a szekciókon belül (pl. szolgáltatások, űrlap) */
         .content-card {
-            @apply bg-black bg-opacity-30 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-gray-700/50;
-        }
-        /* Fő szekciókat tartalmazó ablakok stílusa - sötétebb, kontrasztosabb */
-        .section-card {
-             @apply bg-black bg-opacity-70 backdrop-blur-lg p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-700/50;
+            @apply bg-black bg-opacity-40 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-gray-600/50;
         }
     </style>
 </head>
@@ -58,7 +54,7 @@
     </video>
 
     <!-- Navigációs Sáv -->
-    <header id="home" class="bg-black bg-opacity-70 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-700/50">
+    <header id="home" class="bg-black bg-opacity-80 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-700/50">
         <nav class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
                 <a href="#home" class="flex-shrink-0 flex items-center group">
@@ -80,7 +76,7 @@
                 </div>
             </div>
             <!-- Mobil menü -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 bg-black bg-opacity-90 p-4 rounded-lg">
                 <a href="#about" class="block nav-link text-center">Rólam</a>
                 <a href="#services" class="block nav-link text-center">Szolgáltatások</a>
                 <a href="#references" class="block nav-link text-center">Referenciák</a>
@@ -93,7 +89,7 @@
     <main class="relative z-10 pt-24">
         <!-- Hero Szekció -->
         <section class="h-screen flex items-center justify-center text-center px-4 -mt-24">
-            <div class="bg-black bg-opacity-50 backdrop-blur-sm p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-4xl">
+            <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-4xl">
                 <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">Egyedi Bútorok, Időtálló Megoldások</h1>
                 <p class="text-xl text-gray-200 mt-4">Precízió és szakértelem az Ön otthonára szabva.</p>
                 <a href="#quote" class="mt-8 inline-block bg-amber-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-amber-600 transition-all duration-300">Kérjen Ajánlatot</a>
@@ -103,8 +99,8 @@
         <!-- Rólam Szekció -->
         <section id="about" class="py-16 md:py-24">
             <div class="container mx-auto px-6">
-                <div class="section-card max-w-5xl mx-auto">
-                    <h2 class="section-title">Szakértelem és Megbízhatóság</h2>
+                <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-5xl mx-auto">
+                    <h2 class="section-title">Rólam</h2>
                     <p class="section-subtitle">
                         Czimber Tibor vagyok, tapasztalt asztalos. Célom, hogy egyedi és időtálló faipari megoldásokat hozzak létre, amelyek tökéletesen illeszkednek az Ön igényeihez és otthona stílusához. Legyen szó egyedi bútorról, komplett konyhaberendezésről vagy belsőépítészeti kivitelezésről, a precizitás és a megbízhatóság minden munkám alapja.
                     </p>
@@ -136,9 +132,9 @@
         <!-- Szolgáltatások Szekció -->
         <section id="services" class="py-16 md:py-24">
              <div class="container mx-auto px-6">
-                <div class="section-card max-w-5xl mx-auto">
+                <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-5xl mx-auto">
                     <h2 class="section-title">Szolgáltatásaim</h2>
-                    <p class="section-subtitle">A tervezéstől a kivitelezésig minden lépésnél a tökéletességre törekszem, hogy egyedi és időtálló megoldások szülessenek.</p>
+                    <p class="section-subtitle italic">"A tervezéstől a kivitelezésig minden lépésnél a tökéletességre törekszem, hogy egyedi és időtálló megoldások szülessenek."</p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div class="content-card text-center">
                             <h3 class="text-xl font-bold text-amber-400 mb-4">Konyhabútorok</h3>
@@ -164,7 +160,7 @@
         <!-- Referenciák Szekció -->
         <section id="references" class="py-16 md:py-24">
             <div class="container mx-auto px-6">
-                <div class="section-card max-w-5xl mx-auto">
+                <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-5xl mx-auto">
                     <h2 class="section-title">Referencia Munkáim</h2>
                     <p class="section-subtitle">Tekintse meg néhány korábbi projektemet, amelyek a minőség és a precizitás jegyében születtek.</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -194,7 +190,7 @@
         <!-- Ajánlatkérés Szekció -->
         <section id="quote" class="py-16 md:py-24">
             <div class="container mx-auto px-6">
-                 <div class="section-card max-w-4xl mx-auto">
+                 <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-4xl mx-auto">
                     <h2 class="section-title">Ajánlatkérés</h2>
                     <p class="section-subtitle">Kérdése van, vagy egyedi árajánlatot szeretne? Töltse ki az alábbi űrlapot, és hamarosan felveszem Önnel a kapcsolatot!</p>
                     <div class="max-w-2xl mx-auto">
@@ -229,7 +225,7 @@
         <!-- Kapcsolat Szekció -->
         <section id="contact" class="py-16 md:py-24">
             <div class="container mx-auto px-6">
-                <div class="section-card max-w-5xl mx-auto">
+                <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-5xl mx-auto">
                     <h2 class="section-title">Kapcsolat</h2>
                     <p class="section-subtitle">Keressen bizalommal az alábbi elérhetőségeken, vagy látogasson el hozzám személyesen.</p>
                     <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -259,7 +255,7 @@
     </main>
 
     <!-- Lábléc -->
-    <footer class="bg-black bg-opacity-70 backdrop-blur-md mt-16 border-t border-gray-700/50">
+    <footer class="bg-black bg-opacity-80 backdrop-blur-md mt-16 border-t border-gray-700/50">
         <div class="container mx-auto px-6 py-8 text-center text-gray-400">
             <div class="mb-4">
                 <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block mx-4 hover:text-white transition-colors duration-300">
@@ -300,4 +296,4 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
-</html>
+</ht
