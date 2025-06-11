@@ -49,6 +49,15 @@
         .lang-text-btn.active {
             @apply text-amber-400;
         }
+        /* Galéria (Lightbox) stílusok */
+        #lightbox {
+            background-color: rgba(0, 0, 0, 0.9);
+            transition: opacity 0.3s ease-in-out;
+        }
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+        }
     </style>
 </head>
 <body class="bg-gray-900">
@@ -182,25 +191,29 @@
                 <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-6xl mx-auto">
                     <h2 class="text-2xl font-semibold text-white text-center mb-12" data-lang-key="references_title">Tekintse meg néhány korábbi projektemet, amelyek a minőség és a precizitás jegyében születtek.</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Referencia 1 -->
-                        <div class="content-card text-center">
+                        <!-- Referencia 1: Konyha -->
+                        <div class="content-card text-center flex flex-col justify-between">
                             <h3 class="text-xl font-bold text-amber-400 mb-4" data-lang-key="ref_kitchen">Modern Konyha</h3>
-                            <img src="r4.jpg" alt="Modern Konyha" class="w-full h-auto object-cover rounded-md shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <img src="r4.jpg" alt="Modern Konyha" class="w-full h-48 object-cover rounded-md shadow-lg my-4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <button onclick="openLightbox('kitchen')" class="mt-auto w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition-all duration-300" data-lang-key="view_gallery">Galéria megtekintése</button>
                         </div>
-                        <!-- Referencia 2 -->
-                         <div class="content-card text-center">
+                        <!-- Referencia 2: Gardrób -->
+                        <div class="content-card text-center flex flex-col justify-between">
                             <h3 class="text-xl font-bold text-amber-400 mb-4" data-lang-key="ref_wardrobe">Beépített Gardrób</h3>
-                            <img src="r27.jpg" alt="Beépített Gardrób" class="w-full h-auto object-cover rounded-md shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <img src="r27.jpg" alt="Beépített Gardrób" class="w-full h-48 object-cover rounded-md shadow-lg my-4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <button onclick="openLightbox('wardrobe')" class="mt-auto w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition-all duration-300" data-lang-key="view_gallery">Galéria megtekintése</button>
                         </div>
-                        <!-- Referencia 3 -->
-                        <div class="content-card text-center">
+                        <!-- Referencia 3: Lépcső -->
+                        <div class="content-card text-center flex flex-col justify-between">
                             <h3 class="text-xl font-bold text-amber-400 mb-4" data-lang-key="ref_stairs">Egyedi Fa Lépcső</h3>
-                            <img src="r5.jpg" alt="Egyedi Fa Lépcső" class="w-full h-auto object-cover rounded-md shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <img src="r5.jpg" alt="Egyedi Fa Lépcső" class="w-full h-48 object-cover rounded-md shadow-lg my-4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <button onclick="openLightbox('stairs')" class="mt-auto w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition-all duration-300" data-lang-key="view_gallery">Galéria megtekintése</button>
                         </div>
-                        <!-- Referencia 4 -->
-                         <div class="content-card text-center">
+                        <!-- Referencia 4: Egyéb -->
+                        <div class="content-card text-center flex flex-col justify-between">
                             <h3 class="text-xl font-bold text-amber-400 mb-4" data-lang-key="ref_other">Egyéb Munkáim</h3>
-                            <img src="r29.jpg" alt="Egyéb Munkáim" class="w-full h-auto object-cover rounded-md shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <img src="r29.jpg" alt="Egyéb Munkáim" class="w-full h-48 object-cover rounded-md shadow-lg my-4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/a8a29e?text=Hiba+a+kép+betöltésekor';">
+                            <button onclick="openLightbox('other')" class="mt-auto w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-600 transition-all duration-300" data-lang-key="view_gallery">Galéria megtekintése</button>
                         </div>
                     </div>
                 </div>
@@ -288,6 +301,27 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Lightbox/Galéria Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 items-center justify-center hidden" onclick="closeLightbox()">
+        <div class="relative bg-black bg-opacity-50 p-4 rounded-lg flex items-center justify-center" onclick="event.stopPropagation()">
+            <!-- Kép konténer -->
+            <img id="lightbox-image" src="" alt="Galéria kép">
+            <!-- Bezárás gomb -->
+            <button onclick="closeLightbox()" class="absolute -top-4 -right-4 text-white bg-black rounded-full p-1">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <!-- Előző gomb -->
+            <button onclick="changeImage(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full ml-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <!-- Következő gomb -->
+            <button onclick="changeImage(1)" class="absolute right-0 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full mr-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+    </div>
+
 
     <script>
         // --- FORDÍTÁSOK ---
@@ -335,6 +369,7 @@
                 ref_wardrobe: "Beépített Gardrób",
                 ref_stairs: "Egyedi Fa Lépcső",
                 ref_other: "Egyéb Munkáim",
+                view_gallery: "Galéria megtekintése",
                 // Ajánlatkérés
                 quote_title: "Ajánlatkérés",
                 form_name: "Név",
@@ -392,6 +427,7 @@
                 ref_wardrobe: "Einbauschrank",
                 ref_stairs: "Individuelle Holztreppe",
                 ref_other: "Weitere Arbeiten",
+                view_gallery: "Galerie ansehen",
                 // Quote
                 quote_title: "Angebot anfordern",
                 form_name: "Name",
@@ -449,6 +485,7 @@
                 ref_wardrobe: "Built-in Wardrobe",
                 ref_stairs: "Custom Wooden Stairs",
                 ref_other: "Other Works",
+                view_gallery: "View Gallery",
                 // Quote
                 quote_title: "Request a Quote",
                 form_name: "Name",
@@ -465,10 +502,53 @@
             }
         };
 
+        // --- GALÉRIA LOGIKA ---
+        const galleries = {
+            kitchen: ['r2.jpg', 'r4.jpg', 'r9.jpg', 'r13.jpg', 'r22.jpg', 'r30.jpg', 'r31.jpg', 'r32.jpg', 'r33.jpg', 'r34.jpg', 'r37.jpg'],
+            wardrobe: ['r27.jpg'], // Helykitöltő, cseréld le a valós képekre
+            stairs: ['r5.jpg'], // Helykitöltő
+            other: ['r29.jpg'] // Helykitöltő
+        };
+
+        let currentGallery = [];
+        let currentIndex = 0;
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+
+        function openLightbox(galleryKey, index = 0) {
+            currentGallery = galleries[galleryKey];
+            currentIndex = index;
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = currentGallery.length - 1;
+            } else if (currentIndex >= currentGallery.length) {
+                currentIndex = 0;
+            }
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            if (currentGallery.length > 0) {
+                lightboxImage.src = currentGallery[currentIndex];
+            }
+        }
+        
         // --- NYELVVÁLTÓ LOGIKA ---
         function changeLanguage(lang) {
             // Aktív gomb stílusának beállítása
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.lang-text-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`lang-${lang}`).classList.add('active');
 
             // Szövegek frissítése
@@ -489,13 +569,25 @@
         });
 
         // Kattintásra bezárja a menüt
-        const navLinks = document.querySelectorAll('#mobile-menu a, .nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                 if(mobileMenu.classList.contains('hidden') === false) {
+        document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                 if(!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                  }
             });
+        });
+        
+        // Billentyűzet események a galériához
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
         });
 
         // --- LÁBLÉC ÉVSZÁM ---
