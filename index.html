@@ -68,14 +68,14 @@
         A böngésződ nem támogatja a videó lejátszását.
     </video>
 
-    <!-- Nyelvválasztó (Fixen a jobb felső sarokban) -->
-    <div class="fixed top-6 right-6 z-50">
-        <div class="flex items-center space-x-4">
-            <button onclick="changeLanguage('hu')" id="lang-hu" class="lang-text-btn active">HU</button>
+    <!-- Nyelvválasztó (Fixen a jobb felső sarokban - csak asztali nézeten) -->
+    <div class="fixed top-6 right-6 z-50 hidden md:block">
+        <div class="flex items-center space-x-4 bg-black/50 backdrop-blur-md p-2 rounded-md">
+            <button onclick="changeLanguage('hu')" id="lang-hu-desktop" class="lang-text-btn active">HU</button>
             <span class="text-gray-500">|</span>
-            <button onclick="changeLanguage('de')" id="lang-de" class="lang-text-btn">DE</button>
+            <button onclick="changeLanguage('de')" id="lang-de-desktop" class="lang-text-btn">DE</button>
              <span class="text-gray-500">|</span>
-            <button onclick="changeLanguage('en')" id="lang-en" class="lang-text-btn">EN</button>
+            <button onclick="changeLanguage('en')" id="lang-en-desktop" class="lang-text-btn">EN</button>
         </div>
     </div>
 
@@ -114,6 +114,14 @@
                 <a href="#references" class="block nav-link text-center py-2" data-lang-key="nav_references_mobile">Referenciák</a>
                 <a href="#quote" class="block nav-link text-center py-2" data-lang-key="nav_quote_mobile">Ajánlatkérés</a>
                 <a href="#contact" class="block nav-link text-center py-2" data-lang-key="nav_contact_mobile">Kapcsolat</a>
+                <!-- Nyelvválasztó (csak mobilon) -->
+                <div class="flex items-center justify-center space-x-4 pt-4 border-t border-gray-600/50 mt-4">
+                    <button onclick="changeLanguage('hu')" id="lang-hu-mobile" class="lang-text-btn active">HU</button>
+                    <span class="text-gray-500">|</span>
+                    <button onclick="changeLanguage('de')" id="lang-de-mobile" class="lang-text-btn">DE</button>
+                    <span class="text-gray-500">|</span>
+                    <button onclick="changeLanguage('en')" id="lang-en-mobile" class="lang-text-btn">EN</button>
+                </div>
             </div>
         </div>
     </header>
@@ -554,9 +562,10 @@
         
         // --- NYELVVÁLTÓ LOGIKA ---
         function changeLanguage(lang) {
-            // Aktív gomb stílusának beállítása
+            // Asztali és mobil gombok szinkronizálása
             document.querySelectorAll('.lang-text-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`lang-${lang}`).classList.add('active');
+            document.getElementById(`lang-${lang}-desktop`).classList.add('active');
+            document.getElementById(`lang-${lang}-mobile`).classList.add('active');
 
             // Szövegek frissítése
             document.querySelectorAll('[data-lang-key]').forEach(element => {
