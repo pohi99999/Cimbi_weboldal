@@ -71,27 +71,14 @@
     </div>
 
     <!-- Navigációs Sáv -->
-    <header id="home" class="bg-transparent fixed w-full z-40 top-0">
-        <nav class="container mx-auto px-6 py-6 flex items-center justify-between">
-            <!-- Bal oldal: Logó és Név -->
-            <div class="flex-1 flex justify-start">
+    <header id="home" class="bg-stone-900 bg-opacity-80 backdrop-blur-md fixed w-full z-40 top-0">
+        <div class="container mx-auto px-6">
+            <!-- Felső sor: Logó és Mobil gomb -->
+            <div class="flex items-center justify-between py-4">
                  <a href="#home" class="flex-shrink-0 flex items-center group">
                     <img src="logo.png" alt="Czimber Tibor EV Logó" class="h-12 w-auto mr-4 transition-transform duration-300 group-hover:scale-110" onerror="this.style.display='none'; this.onerror=null;">
                     <span class="text-white font-semibold text-lg md:text-xl transition-colors duration-300 group-hover:text-amber-400">Czimber Tibor EV</span>
                 </a>
-            </div>
-
-            <!-- Középső rész: Menüpontok (csak asztali nézeten) -->
-            <div class="hidden md:flex flex-1 justify-center items-center space-x-8">
-                 <a href="#about" class="nav-link" data-lang-key="nav_about">Rólam</a>
-                 <a href="#services" class="nav-link" data-lang-key="nav_services">Szolgáltatások</a>
-                 <a href="#references" class="nav-link" data-lang-key="nav_references">Referenciák</a>
-                 <a href="#quote" class="nav-link" data-lang-key="nav_quote">Ajánlatkérés</a>
-                 <a href="#contact" class="nav-link" data-lang-key="nav_contact">Kapcsolat</a>
-            </div>
-
-            <!-- Jobb oldal: Helykitöltő és mobil gomb -->
-            <div class="flex-1 flex justify-end">
                 <!-- Mobil menü gomb (csak mobilon látszik) -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-white focus:outline-none p-2">
@@ -99,22 +86,32 @@
                     </button>
                 </div>
             </div>
-        </nav>
+            <!-- Alsó sor: Menüpontok (csak asztali nézeten) -->
+            <nav class="hidden md:flex items-center justify-center py-2 border-t border-gray-700/30">
+                 <div class="flex items-center space-x-8">
+                     <a href="#about" class="nav-link" data-lang-key="nav_about">Rólam</a>
+                     <a href="#services" class="nav-link" data-lang-key="nav_services">Szolgáltatások</a>
+                     <a href="#references" class="nav-link" data-lang-key="nav_references">Referenciák</a>
+                     <a href="#quote" class="nav-link" data-lang-key="nav_quote">Ajánlatkérés</a>
+                     <a href="#contact" class="nav-link" data-lang-key="nav_contact">Kapcsolat</a>
+                 </div>
+            </nav>
+        </div>
         <!-- Mobil menü (lenyíló) -->
         <div id="mobile-menu" class="hidden md:hidden container mx-auto px-6 pb-4">
-            <div class="mt-4 space-y-2 bg-black bg-opacity-90 p-4 rounded-lg">
-                <a href="#about" class="block nav-link text-center" data-lang-key="nav_about_mobile">Rólam</a>
-                <a href="#services" class="block nav-link text-center" data-lang-key="nav_services_mobile">Szolgáltatások</a>
-                <a href="#references" class="block nav-link text-center" data-lang-key="nav_references_mobile">Referenciák</a>
-                <a href="#quote" class="block nav-link text-center" data-lang-key="nav_quote_mobile">Ajánlatkérés</a>
-                <a href="#contact" class="block nav-link text-center" data-lang-key="nav_contact_mobile">Kapcsolat</a>
+            <div class="mt-2 space-y-2 bg-stone-900 bg-opacity-95 p-4 rounded-lg border-t border-gray-700/30">
+                <a href="#about" class="block nav-link text-center py-2" data-lang-key="nav_about_mobile">Rólam</a>
+                <a href="#services" class="block nav-link text-center py-2" data-lang-key="nav_services_mobile">Szolgáltatások</a>
+                <a href="#references" class="block nav-link text-center py-2" data-lang-key="nav_references_mobile">Referenciák</a>
+                <a href="#quote" class="block nav-link text-center py-2" data-lang-key="nav_quote_mobile">Ajánlatkérés</a>
+                <a href="#contact" class="block nav-link text-center py-2" data-lang-key="nav_contact_mobile">Kapcsolat</a>
             </div>
         </div>
     </header>
 
-    <main class="relative z-10 pt-32">
+    <main class="relative z-10 pt-48">
         <!-- Hero Szekció -->
-        <section class="h-screen flex items-center justify-center text-center px-4 -mt-32">
+        <section class="h-screen flex items-center justify-center text-center px-4 -mt-48">
             <div class="bg-black bg-opacity-60 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-lg border border-gray-700 max-w-4xl">
                 <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight" data-lang-key="hero_title">Egyedi Bútorok, Időtálló Megoldások</h1>
                 <p class="text-xl text-gray-200 mt-4" data-lang-key="hero_subtitle">Precízió és szakértelem az Ön otthonára szabva.</p>
