@@ -36,7 +36,7 @@
             @apply text-lg text-gray-300 mb-12 text-center max-w-3xl mx-auto;
         }
         .nav-link {
-            @apply text-white hover:text-amber-400 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium;
+            @apply text-xs text-white hover:text-amber-400 transition-colors duration-300 px-3 py-2 rounded-md font-medium;
         }
         /* Belső kártyák a szekciókon belül (pl. szolgáltatások, űrlap) */
         .content-card {
@@ -44,10 +44,17 @@
         }
         /* Nyelvválasztó gombok stílusa */
         .lang-btn {
-            @apply w-8 h-5 rounded-sm overflow-hidden cursor-pointer shadow-md transition-transform duration-300 hover:scale-110 border-2 border-transparent;
+            @apply w-10 h-auto p-1 border-2 border-transparent rounded-md transition-all duration-300 flex items-center justify-center;
+        }
+        .lang-btn:hover {
+            border-color: #78716c; /* semleges szürke a hover-re */
         }
         .lang-btn.active {
-            @apply border-amber-400 scale-110;
+            border-color: #f59e0b; /* borostyán szín az aktívra */
+            transform: scale(1.1);
+        }
+        .lang-icon {
+            @apply h-6 w-auto object-contain; /* Magasság fix, szélesség automatikus, arányok megőrzése */
         }
     </style>
 </head>
@@ -62,49 +69,55 @@
 
     <!-- Navigációs Sáv -->
     <header id="home" class="bg-black bg-opacity-80 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-700/50">
-        <nav class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <!-- Bal oldal: Logó és Név -->
-                <a href="#home" class="flex-shrink-0 flex items-center group">
-                    <img src="logo.png" alt="Czimber Tibor EV Logó" class="h-10 w-auto mr-3 transition-transform duration-300 group-hover:scale-110" onerror="this.style.display='none'; this.onerror=null;">
-                    <span class="text-white font-bold text-base sm:text-lg md:text-xl transition-colors duration-300 group-hover:text-amber-400">Czimber Tibor EV</span>
-                </a>
+        <nav class="container mx-auto px-6 py-3 flex items-center justify-between">
+            <!-- Bal oldal: Logó és Név -->
+            <a href="#home" class="flex-shrink-0 flex items-center group">
+                <img src="logo.png" alt="Czimber Tibor EV Logó" class="h-10 w-auto mr-3 transition-transform duration-300 group-hover:scale-110" onerror="this.style.display='none'; this.onerror=null;">
+                <span class="text-white font-semibold text-sm md:text-base transition-colors duration-300 group-hover:text-amber-400">Czimber Tibor EV</span>
+            </a>
 
-                <!-- Jobb oldal: Menü, Nyelvválasztó, Mobil gomb konténer -->
-                <div class="flex items-center">
-                    <!-- Asztali nézetű menü -->
-                    <div class="hidden md:flex items-center space-x-4">
-                        <a href="#about" class="nav-link" data-lang-key="nav_about">Rólam</a>
-                        <a href="#services" class="nav-link" data-lang-key="nav_services">Szolgáltatások</a>
-                        <a href="#references" class="nav-link" data-lang-key="nav_references">Referenciák</a>
-                        <a href="#quote" class="nav-link" data-lang-key="nav_quote">Ajánlatkérés</a>
-                        <a href="#contact" class="nav-link" data-lang-key="nav_contact">Kapcsolat</a>
-                    </div>
+            <!-- Jobb oldal: Menü, Nyelvválasztó, Mobil gomb konténer -->
+            <div class="flex items-center">
+                <!-- Asztali nézetű menü -->
+                <div class="hidden md:flex items-center space-x-2 lg:space-x-6">
+                    <a href="#about" class="nav-link" data-lang-key="nav_about">Rólam</a>
+                    <a href="#services" class="nav-link" data-lang-key="nav_services">Szolgáltatások</a>
+                    <a href="#references" class="nav-link" data-lang-key="nav_references">Referenciák</a>
+                    <a href="#quote" class="nav-link" data-lang-key="nav_quote">Ajánlatkérés</a>
+                    <a href="#contact" class="nav-link" data-lang-key="nav_contact">Kapcsolat</a>
+                </div>
 
-                    <!-- Nyelvválasztó (minden nézetben látszik) -->
-                    <div class="flex items-center space-x-3 ml-6">
-                        <button onclick="changeLanguage('hu')" class="lang-btn active" id="lang-hu"><img src="hu.jpg" alt="Magyar" class="w-full h-full object-cover"></button>
-                        <button onclick="changeLanguage('de')" class="lang-btn" id="lang-de"><img src="de.jpg" alt="Deutsch" class="w-full h-full object-cover"></button>
-                        <button onclick="changeLanguage('en')" class="lang-btn" id="lang-en"><img src="en.jpg" alt="English" class="w-full h-full object-cover"></button>
-                    </div>
+                <!-- Nyelvválasztó (minden nézetben látszik) -->
+                <div class="flex items-center space-x-3 ml-10">
+                    <button onclick="changeLanguage('hu')" class="lang-btn active" id="lang-hu">
+                        <img src="hu.jpg" alt="Magyar" class="lang-icon">
+                    </button>
+                    <button onclick="changeLanguage('de')" class="lang-btn" id="lang-de">
+                        <img src="de.jpg" alt="Deutsch" class="lang-icon">
+                    </button>
+                    <button onclick="changeLanguage('en')" class="lang-btn" id="lang-en">
+                        <img src="en.jpg" alt="English" class="lang-icon">
+                    </button>
+                </div>
 
-                    <!-- Mobil menü gomb (csak mobilon látszik) -->
-                    <div class="md:hidden ml-4">
-                        <button id="mobile-menu-button" class="text-white focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                        </button>
-                    </div>
+                <!-- Mobil menü gomb (csak mobilon látszik) -->
+                <div class="md:hidden ml-4">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
                 </div>
             </div>
-            <!-- Mobil menü (lenyíló) -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 bg-black bg-opacity-90 p-4 rounded-lg">
+        </nav>
+        <!-- Mobil menü (lenyíló) -->
+        <div id="mobile-menu" class="hidden md:hidden container mx-auto px-6 pb-4">
+            <div class="mt-4 space-y-2 bg-black bg-opacity-90 p-4 rounded-lg">
                 <a href="#about" class="block nav-link text-center" data-lang-key="nav_about_mobile">Rólam</a>
                 <a href="#services" class="block nav-link text-center" data-lang-key="nav_services_mobile">Szolgáltatások</a>
                 <a href="#references" class="block nav-link text-center" data-lang-key="nav_references_mobile">Referenciák</a>
                 <a href="#quote" class="block nav-link text-center" data-lang-key="nav_quote_mobile">Ajánlatkérés</a>
                 <a href="#contact" class="block nav-link text-center" data-lang-key="nav_contact_mobile">Kapcsolat</a>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main class="relative z-10 pt-24">
